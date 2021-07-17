@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from '@env/environment'
 
 @Component({
   selector: 'coordinadora-uptime-last-days',
@@ -7,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UptimeLastDaysComponent implements OnInit {
   public title = '<strong>UPDATE</strong> Last 30 days';
+  public yellowAlertPercentageGreaterThan = environment.yellow_alert_percentage_greater_than;
+  public aquaAlertPercentageGreaterThan = environment.aqua_alert_percentage_greater_than;
   @Input() servicesStatus: any[] = [];
   public serviceStatus: any[] = [];
 

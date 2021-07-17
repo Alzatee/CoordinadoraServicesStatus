@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ServiceStatusModelI } from '@core/models/objects/services-status';
 
 @Component({
   selector: 'coordinadora-overall-uptime',

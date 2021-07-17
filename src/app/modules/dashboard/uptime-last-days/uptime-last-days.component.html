@@ -23,8 +23,8 @@
 
           <div class="d-flex">
             <p *ngFor="let days of service.days; let i = index" class="color-status-info" [ngClass]="[
-                service.days[i] > 59 ? 'yellow-alert' : 'gray-alert',
-                service.days[i] > 80 ? 'aqua-alert' : ''
+                service.days[i] > yellowAlertPercentageGreaterThan ? 'yellow-alert' : 'gray-alert',
+                service.days[i] > aquaAlertPercentageGreaterThan ? 'aqua-alert' : ''
               ]" title="{{ service.days[i] }}%"></p>
           </div>
 
