@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-end jumbotron jumbotron-coord">
+      {{ titleAllsystems }}
+    </div>
+    <div class="col-md-6 d-flex justify-content-start jumbotron jumbotron-coord">
+      <span>Refreshed: {{ lastUpdatedDate | date:"dd/MM/yyyy hh:mm:ss a":"+0000" }}</span>
+    </div>
+  </div>
+</div>
+
+<coordinadora-uptime-last-days *ngIf="servicesStatus.length > 0" [servicesStatus]="servicesStatus">
+</coordinadora-uptime-last-days>
+
+<coordinadora-overall-uptime *ngIf="servicesStatus.length > 0" [servicesStatus]="servicesStatus">
+</coordinadora-overall-uptime>

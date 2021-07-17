@@ -1,0 +1,43 @@
+<section *ngIf="serviceStatus.length > 0" class="container mt-5">
+  <article class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <p class="title-two" [innerHTML]="title"></p>
+    </div>
+
+    <div class="col-md-12">
+      <div class="jumbotron bg-white">
+        <div *ngFor="let service of serviceStatus" class="p-4 coord-border-bt">
+          <div class="row mb-2">
+            <div class="col-6 d-flex justify-content-start">
+              <span class="title">{{ service.title }}</span>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <div class="d-flex">
+                <div class="circle-status-info"
+                  [ngClass]="[service.current_status === 'up' ? 'aqua-alert' : 'yellow-alert']">
+                </div>
+                <span class="subtle">{{ service.current_status | titlecase }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex">
+            <p *ngFor="let days of service.days; let i = index" class="color-status-info" [ngClass]="[
+                service.days[i] > 59 ? 'yellow-alert' : 'gray-alert',
+                service.days[i] > 80 ? 'aqua-alert' : ''
+              ]" title="{{ service.days[i] }}%"></p>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-6 d-flex justify-content-start">
+              <span class="subtle">{{ service.days[0] }}%</span>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <span class="subtle">Today</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

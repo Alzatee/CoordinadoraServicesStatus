@@ -1,0 +1,60 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: $bg-color;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.title {
+  font-weight: bold;
+  color: $title-color;
+}
+
+.title-two {
+  color: $coord-light-blue-color;
+}
+
+span.subtle {
+  color: $coord-light-gray-color;
+}
+
+.jumbotron.jumbotron-coord {
+  background-color: $coord-light-blue-color;
+  color: $white-color;
+  padding: 20px;
+  border-right: 1px solid;
+  border-color: #adadad9c;
+}
+
+.color-status-info {
+  width: 10px;
+  height: 37px;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.circle-status-info {
+  width: 14px;
+  height: 14px;
+  margin: 3px;
+  border-radius: 200px;
+}
+
+.gray-alert {
+  background-color: $coord-gray-color;
+}
+
+.yellow-alert {
+  background-color: $coord-yellow-color;
+}
+
+.aqua-alert {
+  background-color: $coord-aqua-color;
+}
+
+.coord-border-bt {
+  border-bottom: 1px solid #f5f2f2
+}

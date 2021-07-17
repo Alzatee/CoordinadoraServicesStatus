@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  environment: 'Producción',
+  API_URL: 'https://us-central1-cm-devops-294019.cloudfunctions.net/'
 };

@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+// Importación de archivos de estilo.
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import "assets/styles/scss/variables";
+@import "assets/styles/scss/styles";
+@import "assets/styles/scss/mediaQuery";
