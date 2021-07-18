@@ -1,9 +1,14 @@
 /* -- PHONES MEDIA -- */
 @media screen and (max-width: 767px) {
-    .jumbotron.jumbotron-coord {
-        display: block !important;
-        border: none;
-      }
+  .jumbotron.jumbotron-coord {
+    display: block !important;
+    border: none;
+  }
+  .jumbotron.jumbotron-coord.flex {
+    display: flex !important;
+    border: none;
+    justify-content: flex-start !important;
+  }
 }
 /* -- PHONES AND TABLES MEDIA -- */
 @media screen and (max-width: 767px) {
