@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SystemsOperationalComponent } from './systems-operational.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SystemsOperationalComponent', () => {
   let component: SystemsOperationalComponent;
@@ -8,7 +9,10 @@ describe('SystemsOperationalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SystemsOperationalComponent ]
+      declarations: [ SystemsOperationalComponent ],
+      imports: [
+        HttpClientModule
+      ]
     })
     .compileComponents();
   });

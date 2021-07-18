@@ -65,11 +65,11 @@ $ ng build
 1. Ejecutar el siguiente comando para compilar el apartado de pruebas unitarias
 [Karma](https://karma-runner.github.io).
 ````sh
-$ ng test --codeCoverage
+$ ng test --codeCoverage --watch 
 ````
 o
 ````sh
-$ ng test --codeCoverage --watch
+$ ng test --codeCoverage
 ````
 
 ## Alias
