@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from '@env/environment';
+import { ModalLoadServicesService } from '@core/services/modal-load-services/modal-load-services.service';
 
 @Component({
   selector: 'coordinadora-root',
@@ -7,5 +7,7 @@ import { environment } from '@env/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  environmentName = environment.environment;
+
+  constructor(public modalLoadServicesService: ModalLoadServicesService) { }
+  
 }

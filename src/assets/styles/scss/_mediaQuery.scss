@@ -3,11 +3,15 @@
   .jumbotron.jumbotron-coord {
     display: block !important;
     border: none;
+    margin-top: 1px;
   }
   .jumbotron.jumbotron-coord.flex {
     display: flex !important;
     border: none;
     justify-content: flex-start !important;
+  }
+  .bg-white {
+    justify-content: center;
   }
 }
 /* -- PHONES AND TABLES MEDIA -- */

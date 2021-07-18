@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, timer } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-// import { CargaEsperaService } from './carga-espera/carga-espera.service';
 import { environment } from '@env/environment';
+import { ModalLoadServicesService } from '@core/services/modal-load-services/modal-load-services.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,21 +12,13 @@ import { environment } from '@env/environment';
 export class InterceptorServicesService implements HttpInterceptor {
   apiUrl: string = environment.API_URL;
 
-  constructor(/* public cargaEsperaService: CargaEsperaService */) { }
+  constructor(public modalLoadServicesService: ModalLoadServicesService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = null;
     let request = req;
 
-    const consumoSegundoPlano = [
-      `${this.apiUrl}get_des/statusXXXXXX`,//validar solo cuando es el segundo consumo
-    ];
-
-    if (consumoSegundoPlano.includes(request.url)) {
-      console.log('%c' + 'Servicio en Segundo plano detectado, no mostrar modal carga', 'color:' + 'green');  
-    } else {
-      // timer(100).subscribe(() => { this.cargaEsperaService.isLoading.next(true); });
-    }
+    timer(100).subscribe(() => { this.modalLoadServicesService.isLoading.next(true); });
 
     request = req.clone({
       setHeaders: {
@@ -38,15 +30,14 @@ export class InterceptorServicesService implements HttpInterceptor {
       }
     });
 
-
     return next.handle(request).pipe(
       // Detección cuando finalice el consumo de los servicios.
       finalize(() => {
-        // timer(100).subscribe(() => { this.cargaEsperaService.isLoading.next(false); });
+        timer(100).subscribe(() => { this.modalLoadServicesService.isLoading.next(false); });
       }),
       // Detección de errores.
       catchError((err: HttpErrorResponse) => {
-        // timer(100).subscribe(() => { this.cargaEsperaService.isLoading.next(false); });
+        timer(100).subscribe(() => { this.modalLoadServicesService.isLoading.next(false); });
         return throwError(err);
       })
     );
