@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 import { UtilService } from '@shared/util/util.service';
 import { ServiceStatusService } from 'app/app-core/core/services/service-status.service';
+import { interval } from 'rxjs';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 
 @Component({
@@ -23,26 +24,28 @@ export class SystemsOperationalComponent implements OnInit {
   constructor(
     private serviceStatusService: ServiceStatusService,
     private utilService: UtilService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.getServicesStatus();
+    //Refrescar serivio a los x minutos de iniciar el primer consumo.
+    interval(environment.interval_to_refresh_service_in_minutes * 60 * 1000).subscribe(x => this.getServicesStatus());
   }
 
   getServicesStatus(): void {
     this.serviceStatusService.getServicesStatus()
-    .subscribe((result: any) => {
-      this.lastUpdatedDate = result.last_updated;
-      this.servicesStatus = result.status.apis;
-      this.getServiceStatus();
-    }, (error: HttpErrorResponse) => {
-      console.log(error);
-      Swal.fire({
-        icon: 'error',
-        title: error.name,
-        text: error.message
-      })
-    });
+      .subscribe((result: any) => {
+        this.lastUpdatedDate = result.last_updated;
+        this.servicesStatus = result.status.apis;
+        this.getServiceStatus();
+      }, (error: HttpErrorResponse) => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: error.name,
+          text: error.message
+        })
+      });
   }
 
   getServiceStatus(): void {
