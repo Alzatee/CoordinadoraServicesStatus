@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UtilService } from '@shared/util/util.service'
 
 @Component({
   selector: 'coordinadora-overall-uptime',
@@ -7,14 +8,49 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OverallUptimeComponent implements OnInit {
   @Input() servicesStatus: any[] = [];
-  public percentageOfTheDay: any;
-  public percentageOfTheWeek: any;
-  public percentageOfTheMonth: any;
+  public serviceStatus: any[] = [];
+  public serviceStatusDays: any[] = [];
+  public lastDayPercentage: any;
+  public lasteWeekPercentage: any;
+  public lasteMonthPercentage: any;
 
-  constructor() { }
+  constructor(private utilService: UtilService) { }
 
   ngOnInit(): void {
-    // console.log(this.servicesStatus);
+    this.getServiceStatus();
   }
+
+  getServiceStatus(): void {
+    this.servicesStatus.forEach(element => {
+      //Para que sea dinámico sin importar cuantos estados o servicios reciba (omite el nombre key que varía) y obtiene la data de cada servicio.
+      this.serviceStatus.push(Object.values(element)[0]);
+    });
+    this.getServiceStatusDays();
+  }
+
+  getServiceStatusDays(): void {
+    this.serviceStatus.forEach(element => {
+      this.serviceStatusDays.push(Object.values(element)[2]);
+    });
+    this.getOfTheDay();
+    this.getOfTheWeek();
+    this.getOfTheMonth();
+  }
+
+  getOfTheDay(): void {
+    this.lastDayPercentage = this.utilService.getPercentagesByDays(this.serviceStatusDays, 1);
+    console.log(this.lastDayPercentage);
+  }
+
+  getOfTheWeek(): void {
+    this.lasteWeekPercentage = this.utilService.getPercentagesByDays(this.serviceStatusDays, 7);
+    console.log(this.lasteWeekPercentage);
+  }
+
+  getOfTheMonth(): void {
+    this.lasteMonthPercentage = this.utilService.getPercentagesByDays(this.serviceStatusDays, 30);
+    console.log(this.lasteMonthPercentage);
+  }
+
 
 }

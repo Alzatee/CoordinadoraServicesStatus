@@ -90,6 +90,7 @@ Estos Alias nos permiten acceder en las importaciones a carpetas de interés muc
 ## Recursos y utilidades
 Recursos obtenidos del prototipo de AdobeXD [Prototipos](https://drive.google.com/drive/folders/147FoJKW1gmdyy82ViB6xsFrUiBvRqUwg)
 -**El tiempo para refrescar el servicio se configura desde los archivos de [environtmens]**
+-**Existe un archivo en shareds de util.service para codigo reutilizable.**
 -Colores coordinadora para el proyecto: [assets/scss/_variables.scss]
 -Imagenes coordinadora: [assets/images]
 -Font Family/Fuente [styles.scss(Import)Regular|Bold]
