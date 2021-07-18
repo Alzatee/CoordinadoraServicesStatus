@@ -32,7 +32,12 @@ export class UtilService {
     //Obtener porcentaje
     const percentage = (sumPercentageByDays * 100) / sumExpectedPercentage;
 
-    return generalPercentage = percentage.toString().split('.')[0];
+    //porcentaje más detallado si no es 100%
+    if (percentage.toString().split('.')[0] !== '100') {
+      return generalPercentage = percentage.toFixed(2).toString(); 
+    } else {
+      return generalPercentage = percentage.toString().split('.')[0];
+    }
   }
 
 }

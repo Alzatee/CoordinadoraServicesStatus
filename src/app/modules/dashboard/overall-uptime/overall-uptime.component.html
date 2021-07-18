@@ -1,7 +1,33 @@
-<section class="container">
+<section class="container mt-5">
     <article class="row">
         <div class="col-md-12">
-            <p>overall-uptime works!</p>
+            <p class="title-two">
+                <strong>{{title | uppercase }}</strong>
+            </p>
+        </div>
+        <div class="col-md-12">
+            <div class="jumbotron jumbotron-coord dark-jumbotron-coord">
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <div class="coord-border-rg">
+                            <div class="large-font"><span><strong>{{ lastDayPercentage }}%</strong></span></div>
+                            <div class="small-font"><span>Last 24 hours</span></div>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="coord-border-rg">
+                            <div class="large-font"><span><strong>{{ lasteWeekPercentage }}%</strong></span></div>
+                            <div class="small-font"><span>Last 7 days</span></div>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div>
+                            <div class="large-font"><span><strong>{{ lasteMonthPercentage }}%</strong></span></div>
+                            <div class="small-font"><span>Last 30 days</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </article>
 </section>

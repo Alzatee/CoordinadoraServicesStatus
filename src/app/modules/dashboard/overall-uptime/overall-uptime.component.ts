@@ -8,6 +8,7 @@ import { UtilService } from '@shared/util/util.service'
 })
 export class OverallUptimeComponent implements OnInit {
   @Input() servicesStatus: any[] = [];
+  public title = 'Overall uptime';
   public serviceStatus: any[] = [];
   public serviceStatusDays: any[] = [];
   public lastDayPercentage: any;
